@@ -1,0 +1,96 @@
+import java.util.Scanner; import java.util.ArrayList;
+class Visitor
+{ String name; String visitorId; String purpose; String status;
+Visitor(String name, String visitorId, String purpose, String status) {this.name = name;
+this.visitorId = visitorId; this.purpose = purpose; this.status = status;
+}
+public String toString() {
+
+return "Name: " + name + ", ID: " + visitorId + ", Purpose: " + purpose + ",Status: " + status;
+}
+
+}
+
+
+
+public class VisitorManagementSystem {
+
+static ArrayList<Visitor> visitorList = new ArrayList<>();
+
+public static void main(String[] args) {
+
+
+while (true) {
+System.out.println("\nVisitor Management System"); System.out.println("1. Check In Visitor"); System.out.println("2. Check Out Visitor"); System.out.println("3. View All Visitors"); System.out.println("4. Exit"); System.out.print("Choose an option: ");
+int choice = scanner.nextInt(); scanner.nextLine();
+
+switch (choice) {case 1:
+checkInVisitor(Scanner); break;
+case 2:
+checkOutVisitor(scanner); break;
+case 3:
+
+viewAllVisitor();break; case 4:
+System.out.println("Exiting..."); scanner.close();
+return;
+
+
+default:
+System.out.println("Invalid choice. Please try again.");
+
+}
+
+}
+
+}
+
+
+
+private static void checkInVisitor(Scanner scanner)
+{System.out.print("Enter visitor's name: "); String name = scanner.nextLine();
+System.out.print("Enter visitor ID: "); String visitorId = scanner.nextLine();
+System.out.print("Enter purpose of visit:
+");String purpose = scanner.nextLine();
+Visitor visitor = new Visitor(name, visitorId, purpose, "Checked In"); visitorList.add(visitor);
+System.out.println("Visitor checked in successfully!");
+
+}
+
+private static void checkOutVisitor(Scanner scanner) {System.out.print("Enter visitor ID to check out: "); String visitorId = scanner.nextLine();
+for (Visitor visitor : visitorList) {
+
+if (visitor.visitorId.equals(visitorId) && visitor.status.equals("Checked In"))
+
+{
+
+
+
+visitor.status = "Checked Out"; System.out.println("Visitor checked out successfully!");return;
+}
+
+}
+
+System.out.println("Visitor not found or already checked out.");
+
+}
+
+
+
+
+
+
+
+private static void viewAllVisitors() {if (visitorList.isEmpty()) {
+System.out.println("No visitors recorded.");
+
+} else {
+
+for (Visitor visitor : visitorList)
+{System.out.println(vi sitor);
+}
+
+}
+
+}
+
+}
